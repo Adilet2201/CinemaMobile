@@ -1,4 +1,4 @@
-// domain/usecase/GetPremieresUseCase.kt
+
 package com.example.lazyrow.domain.usecase
 
 import com.example.lazyrow.data.model.Film

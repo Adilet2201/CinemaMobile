@@ -1,4 +1,4 @@
-// viewmodel/ScreenState.kt
+
 package com.example.lazyrow.viewmodel
 
 import com.example.lazyrow.data.model.Film
@@ -11,5 +11,6 @@ sealed class ScreenState {
         val topRatedFilms: List<Film>,
         val premieres: List<Film>
     ) : ScreenState()
+
     data class Error(val message: String) : ScreenState()
 }

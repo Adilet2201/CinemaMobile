@@ -8,15 +8,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.lazyrow.presentation.ui.components.FilmCard
 import com.example.lazyrow.presentation.ui.components.SectionTitle
 import com.example.lazyrow.presentation.viewmodel.FilmViewModel
 import com.example.lazyrow.viewmodel.ScreenState
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import androidx.navigation.NavController
 
 @Composable
-fun HomeScreen(viewModel: FilmViewModel) {
+fun HomeScreen(viewModel: FilmViewModel, navController: NavController) {
     val screenState by viewModel.screenState.collectAsState()
     val isRefreshing = screenState is ScreenState.Loading
 
@@ -46,7 +46,7 @@ fun HomeScreen(viewModel: FilmViewModel) {
                         .padding(top = 50.dp),
                     contentPadding = PaddingValues(bottom = 16.dp)
                 ) {
-                    // App Title
+
                     item {
                         Text(
                             text = "Skillcinema",
@@ -60,20 +60,12 @@ fun HomeScreen(viewModel: FilmViewModel) {
                         item {
                             Spacer(modifier = Modifier.height(12.dp))
                             SectionTitle(title = "Сейчас в кино")
-                            LazyRowScreen(films = successState.premieres)
+                            LazyRowScreen(films = successState.premieres) { film ->
+                                navController.navigate("film_detail/${film.id}")
+                            }
                         }
                     } else {
-                        item {
-                            Spacer(modifier = Modifier.height(12.dp))
-                            SectionTitle(title = "Сейчас в кино")
-                            Text(
-                                text = "Нет новых премьеров",
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+
                     }
 
                     // "Популярные"
@@ -81,20 +73,12 @@ fun HomeScreen(viewModel: FilmViewModel) {
                         item {
                             Spacer(modifier = Modifier.height(12.dp))
                             SectionTitle(title = "Популярные")
-                            LazyRowScreen(films = successState.popularFilms)
+                            LazyRowScreen(films = successState.popularFilms) { film ->
+                                navController.navigate("film_detail/${film.id}")
+                            }
                         }
                     } else {
-                        item {
-                            Spacer(modifier = Modifier.height(12.dp))
-                            SectionTitle(title = "Популярные")
-                            Text(
-                                text = "Нет популярных фильмов",
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+
                     }
 
                     // "Top Rated"
@@ -102,40 +86,22 @@ fun HomeScreen(viewModel: FilmViewModel) {
                         item {
                             Spacer(modifier = Modifier.height(12.dp))
                             SectionTitle(title = "Топ рейтинга")
-                            LazyRowScreen(films = successState.topRatedFilms)
+                            LazyRowScreen(films = successState.topRatedFilms) { film ->
+                                navController.navigate("film_detail/${film.id}")
+                            }
                         }
                     } else {
-                        item {
-                            Spacer(modifier = Modifier.height(12.dp))
-                            SectionTitle(title = "Топ рейтинга")
-                            Text(
-                                text = "Нет топовых фильмов",
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+
                     }
                 }
             }
             is ScreenState.Error -> {
-                val errorState = screenState as ScreenState.Error
+
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
-                            text = "Ошибка: ${errorState.message}",
-                            color = MaterialTheme.colorScheme.error,
-                            style = MaterialTheme.typography.bodyMedium
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Button(onClick = { viewModel.fetchAllData() }) {
-                            Text(text = "Повторить")
-                        }
-                    }
+                    Text(text = "Ошибка загрузки данных")
                 }
             }
         }

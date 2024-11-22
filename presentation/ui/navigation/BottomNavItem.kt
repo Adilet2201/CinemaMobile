@@ -1,5 +1,5 @@
-// presentation/ui/navigation/BottomNavItem.kt
 package com.example.lazyrow.presentation.ui.navigation
+
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

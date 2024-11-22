@@ -1,9 +1,10 @@
-// data/model/FilmCollectionResponse.kt
+
 package com.example.lazyrow.data.model
 
 import com.google.gson.annotations.SerializedName
 
 data class FilmCollectionResponse(
-    @SerializedName("pagesCount") val pagesCount: Int,
-    @SerializedName("films") val films: List<Film>
+    @SerializedName("total") val total: Int,
+    @SerializedName("totalPages") val totalPages: Int,
+    @SerializedName("items") val films: List<Film>
 )

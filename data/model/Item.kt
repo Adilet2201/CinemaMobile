@@ -1,7 +1,5 @@
-// data/model/Item.kt
-package com.example.lazyrow.data.model
 
-import com.example.lazyrow.data.model.Country
+package com.example.lazyrow.data.model
 
 data class Item(
     val countries: List<Country>,

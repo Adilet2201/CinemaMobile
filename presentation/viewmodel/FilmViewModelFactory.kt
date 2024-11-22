@@ -1,11 +1,9 @@
-// presentation/viewmodel/FilmViewModelFactory.kt
+
 package com.example.lazyrow.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.lazyrow.domain.usecase.GetPopularFilmsUseCase
-import com.example.lazyrow.domain.usecase.GetPremieresUseCase
-import com.example.lazyrow.domain.usecase.GetTopRatedFilmsUseCase
+import com.example.lazyrow.domain.usecase.*
 
 class FilmViewModelFactory(
     private val getPopularFilmsUseCase: GetPopularFilmsUseCase,

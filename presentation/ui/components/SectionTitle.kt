@@ -1,4 +1,3 @@
-// presentation/ui/components/SectionTitle.kt
 package com.example.lazyrow.presentation.ui.components
 
 import androidx.compose.foundation.clickable

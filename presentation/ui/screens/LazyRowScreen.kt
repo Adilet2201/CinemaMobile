@@ -1,4 +1,3 @@
-// presentation/ui/screens/LazyRowScreen.kt
 package com.example.lazyrow.presentation.ui.screens
 
 import androidx.compose.foundation.layout.*
@@ -12,7 +11,7 @@ import com.example.lazyrow.presentation.ui.components.FilmCard
 import com.example.lazyrow.data.model.Film
 
 @Composable
-fun LazyRowScreen(films: List<Film>, onFilmClick: (Film) -> Unit = {}) {
+fun LazyRowScreen(films: List<Film>, onFilmClick: (Film) -> Unit) {
     LazyRow(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = 16.dp),

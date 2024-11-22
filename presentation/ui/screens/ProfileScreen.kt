@@ -1,4 +1,3 @@
-// presentation/ui/screens/ProfileScreen.kt
 package com.example.lazyrow.presentation.ui.screens
 
 import androidx.compose.foundation.layout.*
@@ -15,7 +14,6 @@ fun ProfileScreen() {
             .padding(16.dp),
         verticalArrangement = Arrangement.Center
     ) {
-        // Здесь можно добавить элементы профиля, например, аватар, имя пользователя и т.д.
         Text(text = "Профиль", style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = { /* Обработать действие */ }) {

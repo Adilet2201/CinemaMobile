@@ -1,4 +1,4 @@
-// presentation/ui/components/MovieCardVertical.kt
+
 package com.example.lazyrow.presentation.ui.components
 
 import androidx.compose.foundation.Image
@@ -58,7 +58,7 @@ fun MovieCardVertical(film: Film, onClick: () -> Unit = {}) {
                     style = MaterialTheme.typography.bodySmall,
                     color = Color.Gray
                 )
-                // Дополнительные поля можно добавить здесь
+
             }
         }
     }
